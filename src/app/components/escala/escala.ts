@@ -23,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackError } from '../snack-error/snack-error';
+import { MatCard, MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-escala',
@@ -43,6 +44,7 @@ import { SnackError } from '../snack-error/snack-error';
     MatNativeDateModule,
     FormsModule,
     MatIconModule,
+    MatCardModule
   ],
   templateUrl: './escala.html',
 })

@@ -1,7 +1,47 @@
 .container {
   padding: 20px;
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
-h2 { border-bottom: 2px solid #3f51b5; padding-bottom: 10px; }
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.form-row > mat-form-field {
+  flex: 1;
+}
+
+.w-100 { width: 100%; }
+
+.title {
+  color: #3f51b5;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.btn-save {
+  padding: 20px;
+  font-size: 16px;
+}
+
+.list-card {
+  padding: 10px;
+}
+
+.list-item {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.actions {
+  margin-bottom: 20px;
+}
