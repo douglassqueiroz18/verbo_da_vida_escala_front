@@ -22,13 +22,12 @@ export type EscalaPayload = {
 @Injectable({ providedIn: 'root' })
 export class EscalaService {
   private http = inject(HttpClient);
-  private url = `${environment.apiUrl}/escalas/`;
-
+  private baseUrl = environment.apiUrl;
   listar(): Observable<Escala[]> {
-    return this.http.get<Escala[]>(this.url);
+    return this.http.get<Escala[]>(`${this.baseUrl}/escalas/`);
   }
   criar(pessoa: any): Observable<any> {
-    return this.http.post(this.url, pessoa).pipe(
+    return this.http.post(`${this.baseUrl}/escalas/`, pessoa).pipe(
       catchError((error: HttpErrorResponse) => {
         
         return throwError(() => error);
@@ -36,26 +35,26 @@ export class EscalaService {
     );
   }
   atualizar(id: number, e: EscalaPayload): Observable<Escala> {
-  return this.http.put<Escala>(`${this.url}${id}/`, e).pipe(
+  return this.http.put<Escala>(`${this.baseUrl}/escalas/${id}/`, e).pipe(
     catchError((error: HttpErrorResponse) => throwError(() => error))
   );
   }
   excluir(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.url}${id}/`);
+    return this.http.delete<void>(`${this.baseUrl}/escalas/${id}/`);
   }
 
   // Métodos de apoio para os selects
   listarPessoasPorDepartamento(departamentoId: number) {
     const params = new HttpParams().set('departamento', departamentoId.toString());
-    return this.http.get<any[]>('/api/pessoas/', { params });
+    return this.http.get<any[]>(`${this.baseUrl}/pessoas/`, { params });
   }
   listarDepartamentos(): Observable<any[]> {
-    return this.http.get<any[]>('/api/departamentos/');
+    return this.http.get<any[]>(`${this.baseUrl}/departamentos/`);
   }
   listarEventos(): Observable<any[]> {
-    return this.http.get<any[]>('/api/eventos/');
+    return this.http.get<any[]>(`${this.baseUrl}/eventos/`);
   }
   listarPessoas(): Observable<any[]> {
-    return this.http.get<any[]>('/api/pessoas/');
+    return this.http.get<any[]>(`${this.baseUrl}/pessoas/`);
   }
 }
