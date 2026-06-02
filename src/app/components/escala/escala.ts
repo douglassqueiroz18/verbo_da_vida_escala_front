@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 import { CommonModule, Location } from '@angular/common';
 import {
   ReactiveFormsModule,
@@ -51,7 +51,7 @@ export class EscalaComponent implements OnInit {
   private service = inject(EscalaService);
   private snackBar: MatSnackBar = inject(MatSnackBar);
   private location = inject(Location);
-  
+  private cdr = inject(ChangeDetectorRef);
   form = this.fb.group({
     id: [null],
     data: [new Date(), Validators.required],
@@ -148,6 +148,7 @@ export class EscalaComponent implements OnInit {
     this.service.listar().subscribe((data) => (this.escalas = data));
     this.service.listarDepartamentos().subscribe((d) => (this.departamentos = d));
     this.service.listarEventos().subscribe((e) => (this.evento = e));
+    this.cdr.detectChanges(); // Garante que a view seja atualizada após carregar os dados
   }
   // Carrega os dados no formulário para edição
   editar(escala: Escala) {
