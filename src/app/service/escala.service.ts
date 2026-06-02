@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { environment } from '../../environments/environment.prod';
 
 export interface Escala {
   id?: number;
@@ -21,7 +22,7 @@ export type EscalaPayload = {
 @Injectable({ providedIn: 'root' })
 export class EscalaService {
   private http = inject(HttpClient);
-  private url = '/api/escalas/';
+  private url = `${environment.apiUrl}/escalas/`;
 
   listar(): Observable<Escala[]> {
     return this.http.get<Escala[]>(this.url);
