@@ -1,0 +1,38 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.evento-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+/* Responsividade: em telas pequenas (até 600px), empilha tudo */
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  mat-form-field {
+    width: 100%;
+  }
+}
+
+/* Em telas maiores, os campos de data e departamento ocupam 50% cada */
+@media (min-width: 601px) {
+  .row mat-form-field {
+    flex: 1;
+  }
+}

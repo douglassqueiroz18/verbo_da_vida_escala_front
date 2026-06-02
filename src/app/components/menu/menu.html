@@ -1,0 +1,44 @@
+<mat-toolbar color="primary" class="navbar">
+  <button mat-icon-button class="menu-icon" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  
+  <span>Meu Sistema</span>
+
+  <div class="nav-links">
+  <button mat-button [matMenuTriggerFor]="menuCriar">
+    CRIAR <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+
+  <mat-menu #menuCriar="matMenu">
+    <a mat-menu-item routerLink="/departamentos">Departamentos</a>
+    <a mat-menu-item routerLink="/pessoas">Pessoas</a>
+    <a mat-menu-item routerLink="/escala">Escalas</a>
+    <a mat-menu-item routerLink="/evento">Eventos</a>
+  </mat-menu>
+</div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/departamentos" (click)="sidenav.close()">Departamentos</a>
+      <a mat-list-item routerLink="/pessoas" (click)="sidenav.close()">Pessoas</a>
+      <a mat-list-item routerLink="/escalas" (click)="sidenav.close()">Escalas</a>
+      <a mat-list-item routerLink="/eventos" (click)="sidenav.close()">Eventos</a>
+    </mat-nav-list>
+  </mat-sidenav>
+<mat-sidenav-content>
+  <div class="main-content">
+    
+    <div class="calendar-btn-container">
+      <button mat-raised-button color="accent" routerLink="/calendario" class="calendar-btn">
+        <mat-icon>calendar_today</mat-icon>
+        VER ESCALA
+      </button>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-content>
+</mat-sidenav-container>

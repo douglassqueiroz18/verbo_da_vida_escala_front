@@ -1,0 +1,60 @@
+<div class="actions">
+  <button mat-stroked-button (click)="voltar()">
+    <mat-icon>arrow_back</mat-icon>
+    Voltar
+  </button>
+</div>
+<form [formGroup]="form" (ngSubmit)="salvar()">
+  <h3>{{ form.get('id')?.value ? 'Editar Escala' : 'Nova Escala' }}</h3>
+  
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Data</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="data">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="flex: 1;">
+    <mat-label>Hora</mat-label>
+    <input matInput type="time" formControlName="hora">
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Evento</mat-label>
+    <mat-select formControlName="evento">
+      <mat-option *ngFor="let e of evento" [value]="e.id">{{e.nome}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Departamento</mat-label>
+    <mat-select formControlName="departamento">
+      <mat-option *ngFor="let d of departamentos" [value]="d.id">{{d.nome}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Pessoa</mat-label>
+    <mat-select formControlName="pessoa">
+      <mat-option *ngFor="let p of pessoas" [value]="p.id">{{p.nome}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Salvar</button>
+  <hr>
+<h3>Escalas Cadastradas</h3>
+<mat-list>
+  <mat-list-item *ngFor="let e of escalas">
+    <div matListItemTitle>{{ e.data | date:'dd/MM/yyyy HH:mm':'UTC' }}</div>
+    <div matListItemLine>
+      Evento: {{ getNomeEvento(e.evento) }} | 
+      Depto: {{ getNomeDepto(e.departamento) }} | 
+      Pessoa: {{ getNomePessoa(e.pessoa) }}
+    </div>    
+    <button mat-icon-button (click)="editar(e)">
+      <mat-icon color="primary">edit</mat-icon>
+    </button>
+    <button mat-icon-button (click)="deletar(e.id)">
+      <mat-icon color="warn">delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
+</form>

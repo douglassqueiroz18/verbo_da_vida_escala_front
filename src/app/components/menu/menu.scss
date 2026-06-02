@@ -1,0 +1,57 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: none; // Esconde em mobile
+  a.active {
+    background: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.menu-icon {
+  display: block; // Mostra o botão de menu em mobile
+}
+
+// Em telas maiores (Desktop)
+@media (min-width: 600px) {
+  .nav-links { display: flex; }
+  .menu-icon { display: none; }
+}
+
+mat-sidenav-container {
+  height: calc(100vh - 64px);
+}
+.container { padding: 20px; max-width: 900px; margin: 0 auto; }
+
+.tab-content {
+  padding: 24px;
+  background: white;
+  margin-top: 16px;
+  border-radius: 0 0 8px 8px; // Arredonda apenas a base
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column; // Empilha os campos verticalmente
+  gap: 15px;
+  max-width: 400px;
+}
+.main-content {
+  padding: 20px;
+}
+
+.calendar-btn-container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;     /* Centraliza verticalmente se necessário */
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.calendar-btn {
+  padding: 20px 40px;
+  font-size: 1.2rem;
+  border-radius: 50px; /* Botão arredondado */
+}

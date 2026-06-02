@@ -1,0 +1,20 @@
+<div class="snack-wrapper" style="padding: 16px; min-width: 300px; display: flex; flex-direction: column;">
+  <h3 style="margin-top: 0; color: #ffffff; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 8px;">
+    ⚠️ Erro no Processamento
+  </h3>
+  
+  <ul style="margin: 10px 0; padding-left: 20px; color: #fff;">
+    <li *ngIf="isString(data)">{{ data }}</li>
+    
+    <ng-container *ngIf="isObject(data)">
+      <li *ngFor="let item of data | keyvalue" style="margin-bottom: 5px;">
+       {{ item.value }}
+      </li>
+    </ng-container>
+  </ul>
+
+  <button (click)="fechar()" 
+          style="margin-top: 15px; cursor: pointer; padding: 8px; border: none; border-radius: 4px; background: #fff; color: #d32f2f; font-weight: bold;">
+    Entendido
+  </button>
+</div>

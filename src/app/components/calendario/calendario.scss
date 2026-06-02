@@ -1,0 +1,22 @@
+.calendar-wrapper {
+  display: flex; gap: 24px; padding: 24px; flex-wrap: wrap;
+}
+
+.calendar-card { width: 350px; height: fit-content; }
+.week-view {
+  flex: 1; min-width: 600px;
+
+  .days-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 16px;
+  }
+  
+  .day-box {
+    border: 1px solid #e0e0e0; padding: 8px; border-radius: 8px;
+    background: #fafafa; min-height: 200px;
+  }
+
+  .escala-card {
+    background: #e3f2fd; padding: 6px; margin-top: 6px; border-radius: 4px;
+    font-size: 0.85em; border-left: 4px solid #2196f3;
+  }
+}

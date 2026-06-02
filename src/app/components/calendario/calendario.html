@@ -1,0 +1,34 @@
+<div class="actions">
+  <button mat-stroked-button (click)="voltar()">
+    <mat-icon>arrow_back</mat-icon>
+    Voltar
+  </button>
+</div>
+
+<div class="calendar-wrapper">
+  <mat-card class="calendar-card">
+    <mat-calendar [(selected)]="selectedDate" (selectedChange)="updateWeek($event)"></mat-calendar>
+  </mat-card>
+
+  <div class="week-view">
+    <h3>Escalas da Semana</h3>
+    <div class="days-grid">
+      <div class="day-box" *ngFor="let dia of weekDays">
+        <div class="header">
+          <strong>{{ dia | date:'EEE' }}</strong>
+          <span>{{ dia | date:'dd/MM' }}</span>
+        </div>
+        
+        <div class="content">
+          <div class="escala-card" *ngFor="let esc of getEscalasDoDia(dia)">
+            <div style="font-weight: bold; font-size: 0.8em; color: #555;">
+              {{ getNomeEvento(esc.evento) }}
+            </div>
+            <small>{{ getNomeDepto(esc.departamento) }}</small>
+            <p>{{ getNomePessoa(esc.pessoa) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://verbo-da-vida-escala.onrender.com",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

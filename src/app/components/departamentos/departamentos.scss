@@ -1,0 +1,29 @@
+.container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+
+  h2 { margin-bottom: 20px; }
+}
+
+.form-container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; // Garante que os campos quebrem linha no mobile
+  align-items: center;
+  margin-bottom: 30px;
+
+  mat-form-field {
+    flex: 1 1 250px; // Responsividade fluida
+  }
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto; // Permite scroll apenas na tabela, se necessário
+
+  table {
+    width: 100%;
+    min-width: 400px; // Garante que a tabela não fique espremida demais
+  }
+}

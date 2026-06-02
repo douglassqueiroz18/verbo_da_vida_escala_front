@@ -1,0 +1,63 @@
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$rose-palette,
+        tertiary: mat.$red-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  
+  /* Configuração do fundo */
+  background-image: url('https://cdn-images.dzcdn.net/images/talk/9911859eab2c373116310bf454aa4d20/0x1900-000000-80-0-0.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* Ou 'cover' se quiser preencher tudo */
+  background-attachment: fixed; /* A imagem fica parada enquanto rola a página */
+  
+  /* Opcional: Adiciona uma camada clara para não atrapalhar a leitura do formulário */
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.85); /* Altera o 0.85 para ajustar a transparência */
+    z-index: -1;
+  }
+}
+/* You can add global styles to this file, and also import other style files */
+.error-snackbar-style {
+  .mat-mdc-snack-bar-container {
+    max-width: 500px !important;
+    width: 90vw !important;
+    background-color: #d32f2f !important;
+    color: white !important;
+    
+    // Centralização forçada
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    
+    // Garantir sombra e destaque
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3) !important;
+  }
+}
